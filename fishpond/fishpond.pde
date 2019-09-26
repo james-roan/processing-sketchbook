@@ -86,7 +86,7 @@ class Fish
  
  void setup ()
  {
-   size(1200, 1000);
+   size(1200, 900);
    rectMode(CENTER);
    fish = new Fish[NUM_FISH];
    for(int i = 0; i<NUM_FISH; i++) {

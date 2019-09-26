@@ -19,3 +19,7 @@ A mouse click spawns a number of random vectors around the cursor.
 Fish (rectangles) are gravitated towards the cursor by simulating the force of gravity on the Fish. It tracks position, velocity, and acceleration and updates based on time, not framerate.
 
 ![fishpond screenshot](fishpond/fishpond.png "fishpond physics")
+
+The velocity (red) and acceleration (green) vectors can also be drawn.
+
+![fishpond vectors screenshot](fishpond/fishpond-vectors.png "fishpond vector screenshot")
