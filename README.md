@@ -1,6 +1,6 @@
 # processing-sketchbook
 
-## [2d Vector Field Visualizer](sketch_2d_vector_field/sketch_2d_vector_field.pde)
+## [2d Vector Field Visualizer](sketch_2d_vector_field)
 
 The field given by the following gradient function(s) is shown below.
 
@@ -13,3 +13,9 @@ The field given by the following gradient function(s) is shown below.
 The visualizer is animated. At the moment the vectors travel in the direction of the vector and at the speed of the magnitude, or slope, of the field at the current origin of the vector.
 
 A mouse click spawns a number of random vectors around the cursor.
+
+## [fishpond (Simple Physics Engine)](fishpond)
+
+Fish (rectangles) are gravitated towards the cursor by simulating the force of gravity on the Fish. It tracks position, velocity, and acceleration and updates based on time, not framerate.
+
+![fishpond screenshot](fishpond/fishpond.png "fishpond physics")

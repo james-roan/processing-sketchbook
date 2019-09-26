@@ -4,8 +4,8 @@
  */
  
 final color BG_COLOR = color(50,100,180);
-final static int NUM_FISH = 10;
-final static float GRAV_CONST = 0.01;
+final static int NUM_FISH = 150;
+final static float GRAVITY = 999999;
 
 static Fish fish[];
 static float deltaTime;
@@ -13,15 +13,16 @@ static int lastTime;
  
 class Fish
 {
-  final static boolean DRAW_VECTORS = true;
+  final static boolean DRAW_VECTORS = false;
   final static boolean REFLECT = true;
+  final static int VELOCITY_MAX = 75;  // max velocity in px/s
   
+  final static float mass = 0.2;
   color c;
   PVector pos;
   PVector vel;
   PVector accel;
   PVector force;
-  float mass;
   float size;
   
   public Fish () {
@@ -31,7 +32,6 @@ class Fish
      this.accel = new PVector();
      //this.force = new PVector();
      this.size = random(-15, 15);
-     this.mass = 1;
   }
   
   public void draw () {
@@ -64,6 +64,7 @@ class Fish
       accel.y = force.y/mass;
       force = null;
     }
+    vel.limit(VELOCITY_MAX);
     pos.x += vel.x * deltaTime;
     pos.y += vel.y * deltaTime;
     vel.x += accel.x * deltaTime;
@@ -99,7 +100,9 @@ class Fish
    deltaTime = (millis() - lastTime) / 1000f;
    background(BG_COLOR);
    for(Fish f : fish) {
-     f.applyForce(getMouse().sub(f.pos));
+     PVector mouse_dist = getMouse().sub(f.pos);
+     float g_mag = GRAVITY/mouse_dist.magSq();
+     f.applyForce(mouse_dist.normalize().mult(g_mag).limit(20));
      f.update(deltaTime).draw();
    }
    lastTime = millis();
